@@ -11,16 +11,16 @@
         text-light
       "
     >
-      <a href="" class="invisible btn btn-success">
+      <a class="invisible btn btn-success">
         <i class="fas fa-plus-square text"></i>
       </a>
       <span>{{ column }}</span>
-      <a href="" class="btn btn-success">
-        <i class="fas fa-plus-square text"></i>
+      <a class="btn btn-success">
+        <i (click)="createNewCard(column)" class="fas fa-plus-square text"></i>
       </a>
     </div>
   </div>
-  <div *ngFor="let card of cards">
-    <app-card *ngIf="card.lista == column" [card]="card"></app-card>
+  <div *ngFor="let card of cards" >
+    <app-card *ngIf="card.lista == column" [card]="card" ></app-card>
   </div>
 </div>

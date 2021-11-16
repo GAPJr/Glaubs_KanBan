@@ -19,4 +19,10 @@ export const CARDS: Card[] = [
     lista: 'Done',
     id: 'e764b0c8-1e5e-4aa2-94b6-b9a64bd6fe06',
   },
+  {
+    titulo: 'Terceira Task',
+    conteudo: 'E o teste, cade?',
+    lista: 'Backlog',
+    id: 'e764b0c8-1e5e-4aa2-94b6-b9a64bd6fe06',
+  },
 ];

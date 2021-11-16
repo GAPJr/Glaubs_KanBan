@@ -5,15 +5,21 @@ import { CARDS } from '../../../shared/cards';
 @Component({
   selector: 'app-column',
   templateUrl: './column.component.html',
-  styleUrls: ['./column.component.css']
+  styleUrls: ['./column.component.css'],
 })
 export class ColumnComponent implements OnInit {
-
   @Input() column: any;
   cards = CARDS;
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor() {
+    console.log(this.cards);
   }
 
+  ngOnInit(): void {}
+
+  createNewCard(lista: string) {
+    const newCard = new Card();
+    newCard.lista = lista;
+    this.cards.push(newCard);
+  }
 }

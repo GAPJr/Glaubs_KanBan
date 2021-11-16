@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { COLUMNS } from '../../shared/columns';
 
 @Component({
   selector: 'app-container',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
-  columns = ['ToDo','Doing','Done'];
+  columns = COLUMNS;
   constructor() { }
 
   ngOnInit(): void {
