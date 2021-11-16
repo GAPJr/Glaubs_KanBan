@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Card } from '../../../shared/card';
+import { CARDS } from '../../../shared/cards';
 
 @Component({
   selector: 'app-column',
@@ -8,6 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ColumnComponent implements OnInit {
 
   @Input() column: any;
+  cards = CARDS;
   constructor() { }
 
   ngOnInit(): void {

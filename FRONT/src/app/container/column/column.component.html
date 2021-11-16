@@ -14,12 +14,13 @@
       <a href="" class="invisible btn btn-success">
         <i class="fas fa-plus-square text"></i>
       </a>
-      <span>{{column}}</span>
+      <span>{{ column }}</span>
       <a href="" class="btn btn-success">
         <i class="fas fa-plus-square text"></i>
       </a>
     </div>
   </div>
-  <app-card></app-card>
-  <app-card></app-card>
+  <div *ngFor="let card of cards">
+    <app-card *ngIf="card.lista == column" [card]="card"></app-card>
+  </div>
 </div>
