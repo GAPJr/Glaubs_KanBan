@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Card } from '../../../../shared/card';
+import { CARDS } from '../../../../shared/cards';
 import { COLUMNS } from '../../../../shared/columns';
 
 @Component({
@@ -27,5 +28,25 @@ export class CardComponent implements OnInit {
 
   toggleEditMode() {
     this.editMode = !this.editMode;
+  }
+
+  moveCardLeft() {
+    if (this.atFirstColumn) {
+      return;
+    }
+    const index = this.cols.indexOf(this.card.lista);
+    this.card.lista = this.cols[index - 1];
+  }
+
+  moveCardRight() {
+    if (this.atLastColumn) {
+      return;
+    }
+    const index = this.cols.indexOf(this.card.lista);
+    this.card.lista = this.cols[index + 1];
+  }
+
+  deleteCard() {
+    CARDS.splice(CARDS.indexOf(this.card), 1);
   }
 }

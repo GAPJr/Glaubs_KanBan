@@ -15,7 +15,7 @@
       class="form-control"
       type="text"
       placeholder="Title"
-      value="{{ card.titulo }}"
+      value={{card.titulo}}
       [readonly]="!editMode"
     />
     <a
@@ -31,8 +31,7 @@
       class="form-control"
       placeholder="Description"
       [readonly]="!editMode"
-      >{{ card.conteudo }}
-    </textarea>
+      >{{ card.conteudo }}</textarea>
   </div>
 
   <div
@@ -47,17 +46,17 @@
   >
     <a
       class="btn btn-warning text-light"
-      (click)="toggleEditMode()"
+      (click)="moveCardLeft()"
       [ngClass]="atFirstColumn ? 'invisible' : 'visible'"
     >
       <i class="fas fa-arrow-alt-circle-left"></i>
     </a>
-    <a class="btn btn-danger" (click)="toggleEditMode()">
+    <a class="btn btn-danger" (click)="deleteCard()">
       <i class="fas fa-trash-alt"></i>
     </a>
     <a
       class="btn btn-warning text-light"
-      (click)="toggleEditMode()"
+      (click)="moveCardRight()"
       [ngClass]="atLastColumn ? 'invisible' : 'visible'"
     >
       <i class="fas fa-arrow-alt-circle-right"></i>
