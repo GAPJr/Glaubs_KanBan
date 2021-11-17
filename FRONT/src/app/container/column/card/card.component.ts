@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
       return;
     }
     const index = this.cols.indexOf(this.card.lista);
-    this.card.lista = this.cols[index - 1];
+    CARDS[CARDS.indexOf(this.card)].lista = this.cols[index - 1];
   }
 
   moveCardRight() {
@@ -43,7 +43,7 @@ export class CardComponent implements OnInit {
       return;
     }
     const index = this.cols.indexOf(this.card.lista);
-    this.card.lista = this.cols[index + 1];
+    CARDS[CARDS.indexOf(this.card)].lista = this.cols[index + 1];
   }
 
   deleteCard() {

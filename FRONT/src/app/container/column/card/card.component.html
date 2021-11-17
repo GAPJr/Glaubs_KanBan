@@ -21,7 +21,7 @@
     <a
       (click)="toggleEditMode()"
       class="btn btn-primary"
-      [ngClass]="editMode ? 'invisible' : 'visible'"
+      *ngIf="!editMode"
     >
       <i class="fas fa-edit"></i>
     </a>
