@@ -4,13 +4,11 @@ import { COLUMNS } from '../../shared/columns';
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
-  styleUrls: ['./container.component.css']
+  styleUrls: ['./container.component.css'],
 })
 export class ContainerComponent implements OnInit {
   columns = COLUMNS;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

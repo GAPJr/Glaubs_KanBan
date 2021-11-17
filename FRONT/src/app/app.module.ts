@@ -13,12 +13,10 @@ import { CardComponent } from './container/column/card/card.component';
     NavComponent,
     ContainerComponent,
     ColumnComponent,
-    CardComponent
+    CardComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

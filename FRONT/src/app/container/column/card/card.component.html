@@ -1,4 +1,4 @@
-<div class="card card-flyer m-2">
+<div class="card card-flyer my-1">
   <div
     class="
       card-header
@@ -6,35 +6,78 @@
       text-center
       d-flex
       justify-content-between
-      bg-secondary
+      bg-secondary bg-opacity-75
       text-light
+      p-1
     "
   >
-    <a class="btn text-light disabled"> ID </a>
-    <span>{{ card.titulo }}</span>
-    <a class="btn btn-primary" [ngClass]="editMode ? 'invisible' : 'visible'">
-      <i (click)='toggleEditMode()' class="fas fa-edit"></i>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Title"
+      value="{{ card.titulo }}"
+      [readonly]="!editMode"
+    />
+    <a
+      (click)="toggleEditMode()"
+      class="btn btn-primary"
+      [ngClass]="editMode ? 'invisible' : 'visible'"
+    >
+      <i class="fas fa-edit"></i>
     </a>
   </div>
-  <div class="card-body">
-    <p class="card-text">{{ card.conteudo }}</p>
+  <div class="card-body p-1 bg-secondary bg-opacity-75">
+    <textarea
+      class="form-control"
+      placeholder="Description"
+      [readonly]="!editMode"
+      >{{ card.conteudo }}
+    </textarea>
   </div>
-  <div class="card-footer d-flex justify-content-between bg-secondary" [ngClass]="editMode ? 'd-none' : 'd-flex'">
-    <a class="btn btn-secondary" [ngClass]="isFirst ? 'invisible' : 'visible'">
+
+  <div
+    class="
+      card-footer
+      d-flex
+      justify-content-between
+      bg-secondary bg-opacity-75
+      p-1
+    "
+    *ngIf="!editMode"
+  >
+    <a
+      class="btn btn-warning text-light"
+      (click)="toggleEditMode()"
+      [ngClass]="atFirstColumn ? 'invisible' : 'visible'"
+    >
       <i class="fas fa-arrow-alt-circle-left"></i>
     </a>
-    <a class="btn btn-danger">
+    <a class="btn btn-danger" (click)="toggleEditMode()">
       <i class="fas fa-trash-alt"></i>
     </a>
-    <a class="btn btn-secondary" [ngClass]="isLast ? 'invisible' : 'visible'">
+    <a
+      class="btn btn-warning text-light"
+      (click)="toggleEditMode()"
+      [ngClass]="atLastColumn ? 'invisible' : 'visible'"
+    >
       <i class="fas fa-arrow-alt-circle-right"></i>
     </a>
   </div>
-  <div class="card-footer d-flex justify-content-between bg-secondary" [ngClass]="editMode ? 'd-flex' : 'd-none'">
-    <a class="btn btn-danger">
-      <i (click)='toggleEditMode()' class="fas fa-ban"></i>
+
+  <div
+    class="
+      card-footer
+      d-flex
+      justify-content-between
+      bg-secondary bg-opacity-75
+      p-1
+    "
+    *ngIf="editMode"
+  >
+    <a (click)="toggleEditMode()" class="btn btn-danger">
+      <i class="fas fa-ban"></i>
     </a>
-    <a class="btn btn-success">
+    <a (click)="toggleEditMode()" class="btn btn-success">
       <i class="fas fa-save"></i>
     </a>
   </div>
