@@ -12,7 +12,7 @@ export class ColumnComponent implements OnInit {
   cards = CARDS;
 
   constructor() {
-    console.log(this.cards);
+
   }
 
   ngOnInit(): void {}

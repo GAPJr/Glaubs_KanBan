@@ -6,6 +6,8 @@ import { NavComponent } from './nav/nav.component';
 import { ContainerComponent } from './container/container.component';
 import { ColumnComponent } from './container/column/column.component';
 import { CardComponent } from './container/column/card/card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { APIService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,15 @@ import { CardComponent } from './container/column/card/card.component';
     ColumnComponent,
     CardComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private APIService: APIService) {}
+  authorization = this.APIService.getAuthorizationToken().subscribe((data) => {
+    this.APIService.setAuthorizationToken( String(data));
+  });
+
+
+}
