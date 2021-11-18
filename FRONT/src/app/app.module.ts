@@ -7,7 +7,7 @@ import { ContainerComponent } from './container/container.component';
 import { ColumnComponent } from './container/column/column.component';
 import { CardComponent } from './container/column/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
-import { APIService } from './services/api.service';
+
 
 @NgModule({
   declarations: [
@@ -22,10 +22,7 @@ import { APIService } from './services/api.service';
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(private APIService: APIService) {}
-  authorization = this.APIService.getAuthorizationToken().subscribe((data) => {
-    this.APIService.setAuthorizationToken( String(data));
-  });
+  
 
 
 }
