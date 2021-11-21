@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Card } from '../../../shared/card';
-import { CARDS } from '../../../shared/cards';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Card } from 'src/shared/card';
+import { APIService } from 'src/services/api.service';
 
 @Component({
   selector: 'app-column',
@@ -9,17 +9,29 @@ import { CARDS } from '../../../shared/cards';
 })
 export class ColumnComponent implements OnInit {
   @Input() column: any;
-  cards = CARDS;
 
-  constructor() {
+  cards: Card[] = [];
 
+  constructor(
+    private api: APIService
+  ) { }
+
+  ngOnInit(): void {
+    this.api.getAllCards().subscribe((cards) => {
+      if (!cards) {
+        console.log('Não há cards');
+        return;
+      } else {
+        this.cards = cards;
+      }
+    });
   }
 
-  ngOnInit(): void {}
+  ngOnChanges(): void {
+    
+  }
 
   createNewCard(lista: string) {
-    const newCard = new Card();
-    newCard.lista = lista;
-    this.cards.push(newCard);
+    this.cards.push({ titulo: '', conteudo: '', lista: lista, id: '' });
   }
 }

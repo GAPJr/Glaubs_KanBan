@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { ContainerComponent } from './container/container.component';
 import { ColumnComponent } from './container/column/column.component';
 import { CardComponent } from './container/column/card/card.component';
-import { HttpClientModule } from '@angular/common/http';
 
+import { APIService } from 'src/services/api.service';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
     ContainerComponent,
     ColumnComponent,
     CardComponent,
+    LoginComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
-  providers: [],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
+  providers: [APIService],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  
-
-
-}
+export class AppModule {}

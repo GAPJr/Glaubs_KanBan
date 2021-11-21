@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { COLUMNS } from '../../shared/columns';
+import { COLUMNS } from 'src/shared/columns';
+import { APIService } from 'src/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-container',
@@ -8,7 +10,19 @@ import { COLUMNS } from '../../shared/columns';
 })
 export class ContainerComponent implements OnInit {
   columns = COLUMNS;
-  constructor() {}
+  logedIn!: boolean;
 
-  ngOnInit(): void {}
+  constructor(
+    private api: APIService,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.logedIn = this.api.logedIn;
+    console.log(this.api.logedIn);
+
+    if(!this.logedIn){
+      this.router.navigate(['/login']);
+    }
+  }
 }

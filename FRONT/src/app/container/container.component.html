@@ -1,16 +1,19 @@
-<div class="container-fluid">
-  <div
-    class="
-      d-flex
-      flex-row flex-nowrap
-      justify-content-between
-      align-items-start
-    "
-  >
-    <app-column
-      *ngFor="let col of columns"
-      [column]="col"
-      class="flex-fill"
-    ></app-column>
+<div >
+  <app-nav></app-nav>
+  <div class="container-fluid">
+    <div
+      class="
+        d-flex
+        flex-row flex-nowrap
+        justify-content-between
+        align-items-start
+      "
+    >
+      <app-column
+        *ngFor="let col of columns"
+        [column]="col"
+        class="flex-fill"
+      ></app-column>
+    </div>
   </div>
 </div>

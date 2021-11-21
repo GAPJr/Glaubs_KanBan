@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { APIService } from './services/api.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,5 @@ import { APIService } from './services/api.service';
 export class AppComponent {
   title = 'FRONT';
 
-  constructor(private APIService: APIService) {
-    
-  }
-  ngOnInit() {
-    this.APIService.getAuthorizationToken().subscribe((data) => {
-      console.log('Authorization code is:', data);
-    });
-  }
 }
 
