@@ -17,7 +17,7 @@
       </a>
       <span>{{ column }}</span>
       <a
-        (click)="createNewCard(column)"
+        (click)="createNewCard()"
         class="btn btn-success"
         [ngClass]="column === 'ToDo' ? 'visible' : 'invisible'"
       >
@@ -25,7 +25,10 @@
       </a>
     </div>
   </div>
-  <div *ngFor="let card of cards">
-    <app-card *ngIf="card.lista == column" [card]="card"></app-card>
-  </div>
+  <app-card
+    *ngFor="let card of cards"
+    [column]="column"
+    [card]="card"
+  >
+  </app-card>
 </div>

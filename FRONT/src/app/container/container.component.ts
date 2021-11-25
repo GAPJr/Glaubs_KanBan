@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { COLUMNS } from 'src/shared/columns';
-import { APIService } from 'src/services/api.service';
+import { COLUMNS } from 'src/app/models/columns';
+import { APIService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,11 +18,6 @@ export class ContainerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.logedIn = this.api.logedIn;
-    console.log(this.api.logedIn);
 
-    if(!this.logedIn){
-      this.router.navigate(['/login']);
-    }
   }
 }

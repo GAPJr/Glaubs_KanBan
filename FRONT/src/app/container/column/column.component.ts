@@ -1,6 +1,12 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
-import { Card } from 'src/shared/card';
-import { APIService } from 'src/services/api.service';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { Card } from 'src/app/models/card.model';
+import { APIService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-column',
@@ -10,11 +16,10 @@ import { APIService } from 'src/services/api.service';
 export class ColumnComponent implements OnInit {
   @Input() column: any;
 
-  cards: Card[] = [];
+  cards!: Card[];
+  card!: Card[] | undefined;
 
-  constructor(
-    private api: APIService
-  ) { }
+  constructor(private api: APIService) {}
 
   ngOnInit(): void {
     this.api.getAllCards().subscribe((cards) => {
@@ -23,15 +28,13 @@ export class ColumnComponent implements OnInit {
         return;
       } else {
         this.cards = cards;
+        console.log(this.cards);
       }
     });
+    this.card
   }
 
-  ngOnChanges(): void {
-    
-  }
-
-  createNewCard(lista: string) {
-    this.cards.push({ titulo: '', conteudo: '', lista: lista, id: '' });
+  createNewCard() {
+    // this.cards.push({ titulo: '', conteudo: '', lista: lista, id: '' });
   }
 }

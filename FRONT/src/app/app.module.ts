@@ -8,7 +8,7 @@ import { ContainerComponent } from './container/container.component';
 import { ColumnComponent } from './container/column/column.component';
 import { CardComponent } from './container/column/card/card.component';
 
-import { APIService } from 'src/services/api.service';
+import { APIService } from './services/api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 
