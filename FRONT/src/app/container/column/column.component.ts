@@ -17,24 +17,40 @@ export class ColumnComponent implements OnInit {
   @Input() column: any;
 
   cards!: Card[];
-  card!: Card[] | undefined;
+  card!: Card | undefined;
 
   constructor(private api: APIService) {}
 
   ngOnInit(): void {
+    this.getAllCardsFromAPI();
+  }
+
+  getAllCardsFromAPI() {
     this.api.getAllCards().subscribe((cards) => {
       if (!cards) {
         console.log('Não há cards');
         return;
       } else {
         this.cards = cards;
-        console.log(this.cards);
       }
     });
-    this.card
+    
+  }
+
+  onCardChanged(c: Card) {
+    this.cards.forEach((card) => {
+      if (card.id === c.id) {
+        console.log(card);
+        card.conteudo = c.conteudo;
+        card.titulo = c.titulo;
+        card.lista = c.lista;
+        console.log(card);
+        // console.log(this.card);
+      }
+    });
   }
 
   createNewCard() {
-    // this.cards.push({ titulo: '', conteudo: '', lista: lista, id: '' });
+    this.cards.push({ titulo: '', conteudo: '', lista: this.column, id: '' });
   }
 }

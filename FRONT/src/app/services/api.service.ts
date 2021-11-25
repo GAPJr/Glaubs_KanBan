@@ -21,7 +21,6 @@ export class APIService {
     const headers = { 'Content-Type': 'application/json' };
     const options = { headers: headers };
     const response = this.httpClient.post<string>(url, msgBody, options);
-    console.log(response);
     return response;
   }
 

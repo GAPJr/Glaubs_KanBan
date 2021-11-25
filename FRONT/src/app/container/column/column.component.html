@@ -29,6 +29,7 @@
     *ngFor="let card of cards"
     [column]="column"
     [card]="card"
+    (cardChanged) = "onCardChanged(card)"
   >
   </app-card>
 </div>
