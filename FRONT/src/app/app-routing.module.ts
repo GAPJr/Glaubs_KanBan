@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContainerComponent } from 'src/app/container/container.component';
 import { LoginComponent } from './login/login.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: 'kanban', component: ContainerComponent },
+  { path: 'kanban', canActivate:[], component: ContainerComponent },
 ];
 
 @NgModule({

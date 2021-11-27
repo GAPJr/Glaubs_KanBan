@@ -63,7 +63,7 @@ export class CardComponent implements OnInit {
         this.card.lista
       )
       .subscribe((card) => {
-        this.cardChanged.emit(card);
+        this.api.cardsChanged.next(card);
       });
   }
 
@@ -81,7 +81,7 @@ export class CardComponent implements OnInit {
         this.card.lista
       )
       .subscribe((card) => {
-        this.cardChanged.emit(card);
+        this.api.cardsChanged.next(card);
       });
   }
 
@@ -97,8 +97,7 @@ export class CardComponent implements OnInit {
       this.api
         .createNewCard(this.title, this.description, this.lista)
         .subscribe((card) => {
-          this.cardChanged.emit(card);
-          console.log(card);
+          this.api.cardsChanged.next(card);
         });
     }
     this.toggleEditMode();
@@ -112,6 +111,8 @@ export class CardComponent implements OnInit {
   }
 
   deleteCard() {
-    this.api.deleteCardById(this.card.id).subscribe(() => {});
+    this.api.deleteCardById(this.card.id).subscribe((card) => {
+      this.api.cardsChanged.next(card);
+    });
   }
 }

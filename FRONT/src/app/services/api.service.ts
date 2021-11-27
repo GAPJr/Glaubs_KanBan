@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Card } from 'src/app/models/card.model';
 
 @Injectable({
@@ -14,6 +14,8 @@ export class APIService {
   cards!: Card[];
   authorization: string = localStorage.getItem('auth') || '';
   logedIn!: boolean;
+
+  cardsChanged = new Subject();
 
   getAuthorizationToken(login: string, senha: string){
     const url = this.REST_API_SERVER + '/login/';
@@ -32,6 +34,7 @@ export class APIService {
 
   clearAuth() {
     this.authorization = '';
+    localStorage.removeItem('auth');
     this.logedIn = false;
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { Form, FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -9,20 +10,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  login!: string;
-  senha!: string;
+  // login!: string;
+  // senha!: string;
+
+  loginForm!: FormGroup;
 
   loginError:boolean = false;
 
   constructor(private api: APIService, private router: Router) {}
 
   ngOnInit(): void {
-
+    this.loginForm = new FormGroup({
+      login: new FormControl(null),
+      senha: new FormControl(null),
+    });
   }
 
-  onSubmit(login: any, senha: any): void {
+
+  onSubmit(): void {
+    console.log(this.loginForm.value.login);
+    this.login();
+    
+  }
+
+  login(): void {
     this.api
-      .getAuthorizationToken(login.value, senha.value)
+      .getAuthorizationToken(
+        this.loginForm.value.login,
+        this.loginForm.value.senha
+      )
       .subscribe((token) => {
         if (token) {
           this.api.setAuth(token);
@@ -30,9 +46,13 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/kanban');
           this.loginError = false;
         } else {
-          console.log('Não autorizado', login.value, senha.value);
+          console.log(
+            'Não autorizado',
+            this.loginForm.value.login,
+            this.loginForm.value.senha
+          );
           this.loginError = true;
-          this.api.clearAuth()
+          this.api.clearAuth();
         }
       });
   }
