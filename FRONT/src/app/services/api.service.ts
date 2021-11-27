@@ -7,7 +7,7 @@ import { Card } from 'src/app/models/card.model';
   providedIn: 'root',
 })
 export class APIService {
-  private REST_API_SERVER = 'http://localhost:5000';
+  private REST_API_SERVER = 'https://glaubs-kanban-backend.vercel.app';
 
   constructor(private httpClient: HttpClient) {}
 
