@@ -25,7 +25,7 @@
 
 # 📷 Demo
 
-<img src="./assets/GlaubsKanban.gif">
+<img src="./FRONT/src/assets/GlaubsKanban.gif">
 <br><br>
 
 # ℹ️ About it
