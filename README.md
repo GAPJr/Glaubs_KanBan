@@ -1,150 +1,95 @@
-# Projeto Final - Angular
+# [Glaubs Kanban](https://glaubs-kanban.vercel.app/)
 
-O propósito desse desafio é a criação de frontend para um quadro de kanban. Esse quadro possui listas, que contém cards.
-As imagens abaixo são apenas uma ilustração da funcionalidade desejada:
+<p align="center">
+ <a href="# 📷 Demo">Demo</a> •
+ <a href="# ℹ️ About it">About it</a> • 
+ <a href="# 🔗 Requirements">Requirements</a> • 
+ <a href="# 🛠 Stack">Stack</a> • 
+ <a href="# 👨‍💻 Author">Author</a> • 
+ <a href="# 👏 Thank you!">Thank you</a>
 
-![68747470733a2f2f73332d73612d656173742d312e616d617a6f6e6177732e636f6d2f6c6370692f36326239303530392d383739322d346662312d396161372d3234306635613232633838652e706e67](https://user-images.githubusercontent.com/55414688/141601300-8d164143-2108-4a6a-9457-3c3412a2d902.png)
+</p>
+<p align="center">
 
-Com os dois primeiros cards em modo de edição:
+<a href="https://www.linkedin.com/in/glauberio/">
+<img src="https://img.shields.io/static/v1?label=DEVELOPER&message=Glauberio Pereira&color=7159c1&style=for-the-badge&logo="/>
+</a>
+<a href="https://glaubs-kanban.vercel.app/">
+<img src="https://img.shields.io/static/v1?label=HOST&message=VERCEL&color=7159c1&style=for-the-badge&logo="/>
+</a>
+<a>
+<img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=7159c1&style=for-the-badge&logo="/>
+</a>
+</p>
+<br><br>
 
-![68747470733a2f2f73332d73612d656173742d312e616d617a6f6e6177732e636f6d2f6c6370692f36343837353936382d623033632d343962372d396332382d3464383262373365376435312e706e67](https://user-images.githubusercontent.com/55414688/141601343-8f7c2d25-6abe-4e22-b4b7-1e44e9f9fcb5.png)
+# 📷 Demo
 
-Esse é um protótipo simples, sem estilo, o uso de uma biblioteca de CSS é **obrigatório**.
+<img src="./assets/GlaubsKanban.gif">
+<br><br>
 
-### Rodando a API
+# ℹ️ About it
 
-Uma API de exemplo foi disponibilizada na pasta BACK
+[Glaubs Kanban](https://glaubs-kanban.vercel.app/) is a [Kanban Board](https://en.wikipedia.org/wiki/Kanban) developed to boost the learning curve when developing an [Angular](https://angular.io/) application.
+The user must be able to:
 
-Para rodá-la, faça:
-```
-> cd BACK
-> npm install
-> npm run server
-```
+-   See the elements in the board in a readable way.
+-   Add new elements to the board.
+-   Edit elements in the board.
+-   Move elements from one column to another.
+-   Remove elements from the board.
+<br><br>
 
-Ela responderá na porta 5000.
+# 🔗 Requirements
 
-### Desafio
+1. API must be used to persist cards data
 
-Você precisa criar um frontend de acordo com os requisitos abaixo, que deve ser desenvolvido na pasta "FRONT".
+2. Only one web page with three columns ("To do", "Doing", "Done") must be used
 
-#### Requisitos
+3. Cards must be sorted based on a parameter called "list"
 
-A API nesse projeto utiliza JWT para autenticação, você deve fazer a seguinte requisição antes qualquer outra:
+4. Additional cards could be added to the board fulfilling two parameters: "title" and "description"
 
-```
-(POST) http://0.0.0.0:5000/login/
+5. The new card must start in the "To do" column
 
-{ "login":"letscode", "senha":"lets@123" }
-```
+6. Cards must have two modes: "edit" and "view"
 
-Feita a requisição você receberá um token em formato json. Esse token deve ser enviado em todas as requisições subsequentes pelo header Authorization de acordo com o padrão JWT.
+7. In the view mode, cards must have a title and a description text field. Additionaly cards must have four buttons 
 
-`Authorization: 'Bearer <token>'`
+8. One button is responsable for delete the card, other will change it to edit mode
 
-Lembre-se de setar os headers Accept e ContentType para json em todas as requisições...
+9. Other two buttons will move cards to the left collumn and to the right collumn. 
 
-A API tem os seguintes entrypoints:
+10. In edit mode the card must have a title and a description text field. Additionaly cards must have two buttons.
 
-```
-(GET)     http://0.0.0.0:5000/cards/
-(POST)    http://0.0.0.0:5000/cards/
-(PUT)     http://0.0.0.0:5000/cards/{id}
-(DELETE)  http://0.0.0.0:5000/cards/{id}
-```
+11. One button must cancel edit mode, reset any change and return the card to view mode
 
-**GET** obtém uma lista de cards.
+12. Other button will save the values persisting it in API and return to view mode.
 
-A API retorna um array com o seguinte formato:
+13. Visual style is free to choose, but uses only one page.
 
-```
-[
-  {
-    id: uuid,
-    titulo: string,
-    conteudo: string,
-    lista: string
-  },
-  ...
-]
-```
+14. Use github to share your project. Readme must be updated with the info about the project (how to run, how to contribute, etc). 
 
-**POST** adiciona um novo card, passe-o pelo corpo da requisição com o seguinte formato:
+15. Only one link to the project must be provided.
+<br><br>
 
-```
-{
-  titulo: string,
-  conteudo: string,
-  lista: string
-}
-```
 
-A api retornará o card completo como o id atribuído.
+# 🛠 Stack
 
-**PUT** altera um card existente, passe o id na URL e o card completo pelo corpo da requisição de acordo com o formato:
-```
-{
-  id: uuid (o mesmo passado na URL),
-  titulo: string,
-  conteudo: string,
-  lista: string
-}
-```
+The following stack was used to develop Glaubs Kanban:
 
-A api retornará o card completo que foi salvo.
+-   [Angular](https://angular.io/)
+-   [Bootstrap](https://getbootstrap.com/)
+-   [Typescript](https://www.typescriptlang.org/)
+-   [API](https://developer.mozilla.org/pt-BR/docs/Web/API)
+    <br><br>
 
-**DELETE** remove um card existente, passe o id na URL.
+# 👨‍💻 Author
 
-A API retornará a lista dos cards que sobraram (igual ao GET).
-```
-[
-  {
-    id: uuid,
-    titulo: string,
-    conteudo: string,
-    lista: string
-  }
-]
-```
+-   [Linkedin](https://www.linkedin.com/in/glauberio/)
+-   [GitHub](https://github.com/gapjr)
+    <br><br>
 
-**Atenção**: As rotas tem validações e retornos diferentes dependendo do resultado:
+# 👏 Thank you!
 
-POST e PUT retornam 400 se titulo, conteudo ou lista forem avaliados como falsy.
-
-PUT também retorna 400 se o id passado na URL não for igual ao do objeto passado no corpo da requisição.
-
-PUT e DELETE retornam 404 se não encontrarem um card com o id passado na URL.
-
-Todas as rotas retornam 401 se o token não for passado, for inválido, mal-formado ou expirado.
-
-#### Requisitos
-
-1. A API deve ser usada para persistência dos cards (ela trabalha com persistência em memória) e não deve ser alterada.
-
-2. A interface gráfica será apenas uma tela, nela deve haver três colunas chamadas "To do", "Doing" e "Done".
-
-3. Os cards devem ser listados nessas colunas de acordo com o valor do campo `lista` presenta no card. Os valores de `lista` devem ser "ToDo", "Doing" e "Done", respectivamente.
-
-4. Deve haver um local que permita criar um card passando valores para o `titulo` e `conteudo`, deve haver um botão para adicionar o card.
-
-5. Um novo card deve sempre cair na lista "To Do" após persistido na API.
-
-6. O card deverá ter dois modos: Visualização e Edição.
-
-7. No modo de visualização o card terá um cabeçalho com seu título, o conteúdo e 4 botões.
-
-8. Um dos botões do card deverá excluí-lo (persistindo pela API), outro colocá-lo em modo de edição.
-
-9. Os dois outros botões devem mudar o card para a lista anterior (se houver) ou para a lista seguinte (se houver). A decisão de desabilitar, esconder ou apenas não gerar o evento desses botões quando não houver a proxima lista ou a anterior é sua.
-
-10. No modo de edição, o card conterá um input para o `titulo`, um textarea para o `conteudo` e dois botões.
-
-11. No modo de edição, um dos botões cancela a edição, quando precionado os campos devem ser resetados para o valor atual e voltar o card ao modo de visualização.
-
-12. O outro botão salva o card, persistindo as informações pela API. Também volta ao modo de visualização em seguida.
-
-13. Toda decisão de visual é sua. Apenas utilize uma única tela.
-
-14. O projeto deve ser colocado em um repositório GITHUB ou equivalente, estar público, e conter um readme.md que explique em detalhes qualquer comando ou configuração necessária para fazer o projeto rodar.
-
-15. A entrega será apenas a URL do repositório.
+Thank you [Santander Coders Web Full Stack 2021](https://app.becas-santander.com/en/program/bolsas-santander-tecnologia-santander-coders-web-full-stack-2021) and [Let's Code](https://letscode.com.br/) for supporting developers to pursuit their dreams.
