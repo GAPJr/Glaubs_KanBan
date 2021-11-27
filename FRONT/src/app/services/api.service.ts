@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Card } from 'src/app/models/card.model';
 
 @Injectable({
@@ -13,11 +13,15 @@ export class APIService {
 
   cards!: Card[];
   authorization: string = localStorage.getItem('auth') || '';
-  logedIn!: boolean;
+  headers = {
+    'Content-Type': 'application/json',
+    Authorization: this.authorization,
+  };
 
   cardsChanged = new Subject();
+  isLogged = new Subject();
 
-  getAuthorizationToken(login: string, senha: string){
+  getAuthorizationToken(login: string, senha: string) {
     const url = this.REST_API_SERVER + '/login/';
     const msgBody = { login: login, senha: senha };
     const headers = { 'Content-Type': 'application/json' };
@@ -29,55 +33,33 @@ export class APIService {
   setAuth(auth: string) {
     this.authorization = 'Bearer ' + auth;
     localStorage.setItem('auth', this.authorization);
-    this.logedIn = true;
+    this.isLogged.next(true);
   }
 
   clearAuth() {
     this.authorization = '';
     localStorage.removeItem('auth');
-    this.logedIn = false;
+    this.isLogged.next(true);
   }
 
   getAllCards() {
     const url = this.REST_API_SERVER + '/cards/';
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: this.authorization,
-    };
-    const options = { headers: headers };
+    const options = { headers: this.headers };
     const res = this.httpClient.get<Card[]>(url, options);
     return res;
   }
 
-  createNewCard(
-    titulo: string,
-    conteudo: string,
-    lista: string
-  ) {
+  createNewCard(titulo: string, conteudo: string, lista: string) {
     let card = new Card(titulo, conteudo, lista, '');
     const url = this.REST_API_SERVER + '/cards/';
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: this.authorization,
-    };
-    const options = { headers: headers };
-    console.log({ titulo, conteudo, lista });
+    const options = { headers: this.headers };
     const response = this.httpClient.post<Card[]>(url, card, options);
     return response;
   }
 
-  changeCardById(
-    id: string,
-    titulo: string,
-    conteudo: string,
-    lista: string
-  ) {
+  changeCardById(id: string, titulo: string, conteudo: string, lista: string) {
     const url = this.REST_API_SERVER + '/cards/' + id;
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: this.authorization,
-    };
-    const options = { headers: headers };
+    const options = { headers: this.headers };
     const response = this.httpClient.put<Card[]>(
       url,
       { id, titulo, conteudo, lista },
@@ -88,11 +70,7 @@ export class APIService {
 
   deleteCardById(id: string) {
     const url = this.REST_API_SERVER + '/cards/' + id;
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: this.authorization,
-    };
-    const options = { headers: headers };
+    const options = { headers: this.headers };
     const response = this.httpClient.delete(url, options);
     return response;
   }

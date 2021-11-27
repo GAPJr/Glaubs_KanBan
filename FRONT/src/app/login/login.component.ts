@@ -3,21 +3,19 @@ import { APIService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { Form, FormControl, FormGroup } from '@angular/forms';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  // login!: string;
-  // senha!: string;
-
   loginForm!: FormGroup;
+  loginError: boolean = false;
 
-  loginError:boolean = false;
-
-  constructor(private api: APIService, private router: Router) {}
+  constructor(
+    private api: APIService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -26,11 +24,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
   onSubmit(): void {
     console.log(this.loginForm.value.login);
     this.login();
-    
   }
 
   login(): void {
@@ -42,18 +38,18 @@ export class LoginComponent implements OnInit {
       .subscribe((token) => {
         if (token) {
           this.api.setAuth(token);
-          // console.log(this.api.authorization);
           this.router.navigateByUrl('/kanban');
           this.loginError = false;
         } else {
-          console.log(
-            'Não autorizado',
-            this.loginForm.value.login,
-            this.loginForm.value.senha
-          );
           this.loginError = true;
+          this.loginForm.reset();
           this.api.clearAuth();
         }
       });
+  }
+
+  logout(): void {
+    this.router.navigateByUrl('/login');
+    this.api.clearAuth();
   }
 }
