@@ -22,14 +22,12 @@ export class ContainerComponent implements OnInit {
 
      this.api.cardsChanged.subscribe((card) => {
        this.getAllCardsFromAPI();
-       console.log(card);
      });
   }
 
   getAllCardsFromAPI() {
     this.api.getAllCards().subscribe((cards) => {
       if (!cards) {
-        console.log('Não há cards');
         return;
       } else {
         this.cards = cards;

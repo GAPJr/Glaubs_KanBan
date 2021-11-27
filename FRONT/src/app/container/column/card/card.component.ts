@@ -93,7 +93,6 @@ export class CardComponent implements OnInit {
           // this.card = card;
         });
     } else {
-      console.log(this.title, this.description, this.lista);
       this.api
         .createNewCard(this.title, this.description, this.lista)
         .subscribe((card) => {

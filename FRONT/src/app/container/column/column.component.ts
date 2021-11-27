@@ -20,24 +20,7 @@ export class ColumnComponent implements OnInit {
   constructor(private api: APIService) {}
 
   ngOnInit(): void {
-    // this.getAllCardsFromAPI();
-
-    // this.api.cardsChanged.subscribe(() => {
-    //   this.getAllCardsFromAPI()
-    // });
   }
-
-  // getAllCardsFromAPI() {
-  //   this.api.getAllCards().subscribe((cards) => {
-  //     if (!cards) {
-  //       console.log('Não há cards');
-  //       return;
-  //     } else {
-  //       this.cards = cards;
-  //     }
-  //   });
-    
-  // }
 
   onCardChanged(c: Card) {
     this.cards.forEach((card) => {
@@ -46,9 +29,6 @@ export class ColumnComponent implements OnInit {
         card.conteudo = c.conteudo;
         card.titulo = c.titulo;
         card.lista = c.lista;
-        console.log(card);
-        // console.log(this.card);
-        // this.getAllCardsFromAPI();
       }
     })
     
